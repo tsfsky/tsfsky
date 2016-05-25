@@ -1,1 +1,3 @@
-﻿asd 啊实打实的 阿萨德
+﻿Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
