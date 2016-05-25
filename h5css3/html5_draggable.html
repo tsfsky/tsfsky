@@ -1,0 +1,35 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		.div1 {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+	</style>
+	<script type="text/javascript" src="content/js/jquery-1.8.3.js"></script>
+	<script type="text/javascript">
+		function allowDrop(ev)//拖动经过事件
+		{
+			ev.preventDefault();
+			$(ev.toElement).css('background','#808080');
+		}
+
+		function drag(ev)//拖动开始事件
+		{
+			//ev.dataTransfer.setData("Text",ev.target.id);
+		}
+
+		function drop(ev)//拖动结束事件
+		{
+			// ev.preventDefault();
+			// var data=ev.dataTransfer.getData("Text");
+			// ev.target.appendChild(document.getElementById(data));
+			$('#a').appendTo($(ev));
+		}
+	</script>
+</head>
+<body>
+	<p>请把 W3School 的图片拖放到矩形中：</p>
+	<div class="div1" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+	<br />
+	<img id="a" src="http://www.w3school.com.cn/i/w3school_banner.gif" draggable="true" ondragstart="drag(event)" />
+</body>
+</html>

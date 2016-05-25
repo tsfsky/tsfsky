@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>移动</title>
+<script type="text/javascript" src="../content/js/jquery-1.8.3.js"></script>
+<style type="text/css">
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.none {
+  display: none;
+}
+.yy {
+  height: 100%;
+  background: url('content/image/yy.jpg') center center no-repeat;
+  background-size: 90% auto;
+}
+</style>
+</head>
+<body>
+<input type="text" id="cc"/>
+<script type="text/javascript">
+  $(function(){
+      $('#cc').val(decodeURI(geturipra('aa')));
+      alert(window.location.search);
+      //alert(decodeURI(window.location.search));
+  });
+    
+
+var geturipra =function(praname){
+      var reg = new RegExp("(^|&)" + praname + "=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return r[2]; return "";
+  };
+</script>
+</body>
+</html>

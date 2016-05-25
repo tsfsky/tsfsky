@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动</title>
+</head>
+<body>
+   <div id="aaa">aaaaa</div>
+</body>
+</html>
+<script type="text/javascript" src="content/js/jquery.js"></script>
+<script>
+$(function(){
+    window.onblur = function() {
+        $('#aaa').html('blur clear');
+       
+    }
+    window.onfocus = function() {
+        $('#aaa').html('focus auto');
+    }
+});
+</script>

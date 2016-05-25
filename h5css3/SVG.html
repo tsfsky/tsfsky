@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<style type="text/css">
+		.wk{-webkit-transition: all 1s ease-in!important;transition: all 1s ease-in!important;}
+
+		/*定义keyframe动画*/ 
+		/* 添加动画到path元素 */ 
+		.path{
+			width:100%;
+			height:100%;
+			stroke-dasharray: 265.07; 
+			stroke-dashoffset: 265.07; 
+			animation: dash 3s linear infinite; 
+			/* 支持chrome */ 
+			-webkit-animation: dash 3s linear infinite;
+		} 
+		@keyframes dash{
+			from{ 
+				stroke-dashoffset: 265.07;/* 这里是svg图形中素描线长度，可以使用js获取 */
+			} 
+			to{ 
+				stroke-dashoffset: 0; 
+			}
+		} 
+		/* 支持chrome浏览器 */ 
+		@-webkit-keyframes dash{
+			from{ 
+				stroke-dashoffset: 265.07; /* 这里是svg图形中素描线长度，可以使用js获取 */ 
+			} 
+			to{
+				stroke-dashoffset: 0;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<svg width="100%" height="30%">
+		<path id="path" class="path" d="M250 150 L150 350 L350 350 Z"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<circle cx="102" cy="102" r="100" stroke="black" stroke-width="2" fill="red"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<rect x="20" y="20" rx="20" ry="20" fill-opacity="0.5" stroke-opacity="0.9" width="300" height="100" stroke="#000000" stroke-width="5" fill="red"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<ellipse cx="202" cy="82" rx="200" ry="80" style="fill:rgb(200,100,50); stroke:rgb(0,0,100);stroke-width:2"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<line x1="0" y1="0" x2="300" y2="100" style="stroke:rgb(99,99,99);stroke-width:2"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<polygon points="0,0" id="star" class="wk" style="fill:#cccccc; stroke:#000000;stroke-width:0"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<polyline points="0,0 0,20 20,20 20,40 40,40 40,60" style="fill:white;stroke:red;stroke-width:2"/>
+	</svg>
+	<svg width="100%" height="30%">
+		<path d="M250 150 L150 350 L350 350 Z" />
+	</svg>
+</body>
+</html>
+<script type="text/javascript" src="content/js/jquery-1.8.3.js"></script>
+<script>
+	$(function(){
+		$('#star').css('stroke-width','3').attr('points','10,30 110,30 10,110 60,0 110,110');
+
+		/*定义相关Javascript*/ 
+		var current_frame, 
+		//定义当前帧 total_frames, 
+		//定义全部帧数 path, 
+		//定义svg中的唯一path元素 length, 
+		//定义path所生成的素描长度 handle; 
+		//定义javascript动画句柄 
+		path = document.getElementById('path'), 
+		length = path.getTotalLength(); 
+		//定义初始化方法
+		var init = function(){
+			current_frame = 0;
+			total_frames = 160;
+			path.style.strokeDasharray = length + ' ' + length; 
+			//定义dasharray
+			path.style.strokeDashoffset = length;
+			//定义dashoffset
+			handle = 0;
+		}
+		//定义实际的动画绘制方法
+		var draw = function(){
+			var progress = current_frame/total_frames;
+			if(progress>1){
+				//这里定义完成动画
+				window.cancelAnimationFrame(handle);
+			}else{
+				//否则使用reqeuestAnimationFrame来生成动画
+				current_frame++;
+				path.style.strokeDashoffset = Math.floor(length*(1 - progress)); handle = window.requestAnimationFrame(draw);
+			}
+		} 
+		//定义一个重新运行方法
+		var rerun = function(){
+			init();
+			draw();
+		} 
+		//页面加载即运行
+		rerun();
+	})
+</script>

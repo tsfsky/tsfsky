@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>slide</title>
+	<meta charset="UTF-8">
+
+	<!-- <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,target-densitydpi=device-dpi" /> -->
+
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="content/css/Animate.css">
+	<style type="text/css">
+		html,body{ margin: 0px; padding: 0px; font-family: 微软雅黑; font-size: 26px; font-weight: bold;}
+		.ourslider_nav_n{ background-color: #ffffff !important; border:solid 1px #000000 !important;}
+		.ourslider_nav_n_checked{ background-color: #000000 !important; border:solid 1px #000000 !important;}
+	</style>
+	<script type="text/javascript" src="content/js/zepto.min.js"></script>
+	<script type="text/javascript" src="content/js/touch.js"></script>
+	<script type="text/javascript" src="content/js/ourslider.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.slidermain').ourSlider({
+				'scurpage': 2, 
+				'autoplay': true, 
+				'playspeed': 4000,
+				'movespeed': 5,
+				'callbacks': function() {} 
+			});
+		})
+	</script>
+</head>
+<body>
+	<div align="center">
+		<div class="container" style="width:320px; height:150px;" align="center">
+			<div class="slidermain">
+				<ul>
+					<li>one一</li>
+					<li>two二</li>
+					<li>three三</li>
+					<li>four四</li>
+					<li>five五</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

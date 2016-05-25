@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>移动</title>
+<script type="text/javascript" src="../content/js/jquery-1.8.3.js"></script>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+.none {
+	display: none;
+}
+.yy {
+	height: 100%;
+	background: url('content/image/yy.jpg') center center no-repeat;
+	background-size: 90% auto;
+}
+</style>
+</head>
+<body>
+111111111111111111111
+<input value="to2" type="button" id="cc"/>
+<script type="text/javascript">
+  $(function(){
+    $('#cc').click(function(){
+      window.location.href='2.html?aa='+encodeURI('南成乐')+'&bb=cc';
+    });
+    
+  });
+</script>
+</body>
+</html>

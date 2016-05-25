@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="content/css/Animate.css">
+    <style type="text/css">
+        html,body,ul,li{margin: 0px; padding: 0px;}
+        body{background-color: #ffffff;}
+        .cvs{width: 200px; height: 200px;}
+
+        .parentss{display:-webkit-box;width:100%;height:200px;-webkit-box-orient:horizontal;text-align:left;}
+        .p1{-webkit-box-flex:1;background-color:red;}
+        .p2{-webkit-box-flex:3;background-color:yellow;}
+        .p3{width:100px;background-color:blue;}
+    </style>
+</head>
+<body>
+    <div align="left">
+        <div align="center" id="asd" class="animated bounceIn">
+         <canvas class="cvs" id="cvs"></canvas>
+     </div>
+     <br/>
+     <br/>
+     <span style="-webkit-user-select:none">
+         -webkit-box
+     </span>
+     <div class="parentss">
+        <div class="p1">1</div>
+        <div class="p2">2</div>
+        <div class="p3">3</div>
+    </div>
+    <br/>
+    <span>
+        -webkit-box-sizing
+    </span>
+    <div style="-webkit-box-sizing: border-box;width: 200px;height: 200px;background: #808080;padding: 10px;border: double 3px #ebebeb;"></div>
+    <br/>
+    <span>◆一个特殊符号</span>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+</body>
+<script type="text/javascript" src="content/js/zepto.min.js"></script>
+<script type="text/javascript" src="content/js/touch.js"></script>
+<script>
+    var imageObj = new Image();
+    imageObj.src ="content/image/c32.jpg";
+    imageObj.onload=function(){
+        var cvs = $('#cvs')[0].getContext('2d');
+        cvs.drawImage(imageObj,-110,0,500,150);
+    }
+    $(function(){
+        setTimeout(scrollTo,0,0,0);
+        //监听元素动画执行完成事件
+        $('#asd')[0].addEventListener('webkitAnimationEnd',function(){
+            $(this).attr('class','');
+        });
+        $('#asd').tap(function(e){
+            $(this).addClass('animated bounceInLeft');
+        });
+    })
+</script>
+</html>
