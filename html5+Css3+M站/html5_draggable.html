@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		.div1 {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+		.div2 {width:200px;height:30px;padding:10px;background-color:yellow;}
+
+		.div11 {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+		.div22 {width:200px;height:30px;padding:10px;background-color:yellow;}
+	</style>
+	<script type="text/javascript" src="content/js/jquery-1.8.3.js"></script>
+	<script type="text/javascript">
+		function dragstart(ev)//拖动开始事件  被作用元素      
+		{
+			//$('.div3').prepend('开始拖拽'+ev.target+'<br/>');
+			ev.dataTransfer.setData("objsss","asd");
+			//ev.dataTransfer.setData("index","asd");
+		}
+		function dragend(ev)//拖动结束 被拖元素  
+		{
+			$('.div3').prepend('结束拖拽'+ev.target+'<br/>');
+		}
+		function dragenter(ev)//拖动进入事件 
+		{
+			$('.div3').prepend('拖拽进入目标'+ev.target+'<br/>');
+		}
+
+		function dragover(ev)//拖动经过事件
+		{
+			ev.preventDefault();
+		}
+
+		function dragleave(ev)//拖动经过事件
+		{
+			$('.div3').prepend('拖拽在目标移出'+ev.target+'<br/>');
+		}
+		function drop(ev)//拖动结束事件
+		{
+			//var ev = ev || window.evnet;
+			//$('.div3').prepend('拖拽在目标中放下'+ev+'<br/>');
+		}
+	</script>
+</head>
+<body>
+	<p>请把 W3School 的图片拖放到矩形中：</p>
+	<div class="div1" ondrop="drop(event)" ondragover="dragover(event)"></div>
+	<br />
+	<div class="div2" draggable="true" ondragstart="dragstart(event)"></div>
+	<br />
+	<div class="div3"></div>
+	<br><br><br>
+	<p>请把 W3School 的图片拖放到矩形中：</p>
+	<div class="div11"></div>
+	<br />
+	<div class="div22" draggable="true"></div>
+	<br />
+	<div class="div33"></div>
+	<script type="text/javascript">
+		$('body').on('dragstart','.div22',function(e){
+                $(this).css('opacity','0.6');
+                e.originalEvent.dataTransfer.setData("obj","asd");
+            }).on('dragend','.div22',function(e){
+                $(this).css('opacity','1');
+            });
+
+            $('body').on('dragenter','.div11',function(event){
+                $(this).addClass('t_zw_o_ck');
+            }).on('dragleave','.div11',function(event){
+                $(this).removeClass('t_zw_o_ck');
+            }).on('dragover','.div11',function(event){
+                $(this).addClass('t_zw_o_ck');
+                event.preventDefault();
+            }).on('drop','.div11',function(event){
+                $(this).removeClass('t_zw_o_ck');
+                $(this).addClass('t_zw_o_ckim');
+                $(curTzOne).appendTo($(this)).css('opacity','1');
+                _self.zwnumcreat();
+                $('.thas_save').removeClass('disBtn');
+            });
+	</script>
+
+	<br><br><br><br><br>
+	<p>请把 W3School 的图片拖放到矩形中：</p>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<br />
+	<div style="width: 200px;height: 100px;background-color:#808080" draggable="true" ondragstart="drag(event)">
+		
+	</div>
+	<style type="text/css">
+		#div1 {width:198px; height:66px;padding:10px;border:1px solid #aaaaaa;}
+	</style>
+	<script type="text/javascript">
+	function allowDrop(ev)
+	{
+	ev.preventDefault();
+	}
+
+	function drag(ev)
+	{
+	//ev.dataTransfer.setData("Text",ev.target.id);
+	}
+
+	function drop(ev)
+	{
+	//ev.preventDefault();
+	//var data=ev.dataTransfer.getData("Text");
+	//ev.target.appendChild(document.getElementById(data));
+	}
+	</script>

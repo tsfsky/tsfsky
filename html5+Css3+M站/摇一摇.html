@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>移动</title>
+    <style type="text/css">
+        html,body{margin:0;padding:0;height:100%;}
+        .none{display:none;}
+        .yy{height:100%;background:url('content/image/yy.jpg') center center no-repeat;background-size:90% auto;}
+        .ting{position:fixed;bottom:20px;left:0px;width:100%;line-height:30px;}
+        .insetText {
+            font-family: Lucida Grande;
+            font-size: 25px;
+            font-weight:bold;
+            background-color: #666666;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+        }
+    </style>
+</head>
+<body>
+   <div class="yy"></div>
+   <div class='ting insetText none' align="center">【别动】<br/>音量调高!听</div>
+   <audio id="sbmp3" src="content/sb.mp3"></audio>
+</body>
+</html>
+<link rel="stylesheet" type="text/css" href="content/css/Animate.css">
+<script type="text/javascript" src="content/js/jquery.js"></script>
+<script>
+if (window.DeviceMotionEvent) { 
+	window.addEventListener('devicemotion',deviceMotionHandler, false);  
+} 
+var speed = 30;//speed
+var x = y = z = lastX = lastY = lastZ = 0;
+function deviceMotionHandler(eventData) {  
+  var acceleration =event.accelerationIncludingGravity;
+        x = acceleration.x;
+        y = acceleration.y;
+        z = acceleration.z;
+        if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+            $('.yy').addClass('animated shake');
+            $('#sbmp3')[0].pause();
+            setTimeout(function(){
+                $('.yy').removeClass('animated shake');
+                $('.ting').removeClass('none').addClass('animated zoomInDown');
+                $('#sbmp3')[0].play();
+            },1000);
+        }
+        lastX = x;
+        lastY = y;
+        lastZ = z;
+}
+</script>

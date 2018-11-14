@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="content/css/Animate.css">
+<script type="text/javascript" src="content/js/jquery.js"></script>
+<title>移动</title>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+.none {
+	display: none;
+}
+</style>
+</head>
+<body>
+<input class="input" type="button" value="btn1"/>
+<input class="input" type="button" value="btn2"/>
+<input class="input" type="button" value="btn3"/>
+<input class="input2" type="button" value="btn4"/>
+<script type="text/javascript">
+	$(function(){
+		$('body').click(function(e){
+			var btns=e.target;
+			if ($(btns).attr('type')=='button') {
+				console.log($(btns).val());
+			}
+		});
+	})
+</script>
+</body>
+</html>

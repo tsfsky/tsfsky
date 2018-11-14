@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="img_from" style="background: #ebebeb;width:3000px;overflow:hidden;">
+        <div>asdasd</div>
+        <br/>
+        <div>asdasd</div>
+        <br/>
+        <div>asdasd</div>
+        <br/>
+        <div>asdasd</div>
+        <div style="float:right;">asdasd</div>
+    </div>
+    <br/>
+    <img class="img_to" width="80%" src="" />
+    <br/>
+    <br/>
+</body>
+
+</html>
+<script type="text/javascript" src="../content/js/jquery.js"></script>
+<script type="text/javascript" src="html2canvas.min.js"></script>
+<script>
+$(function() {
+    /*html2canvas($(".img_from"), {
+        height: $(".img_from").height()*1+2,
+        width: $(".img_from").width()*1+2,
+        onrendered: function (canvas) {
+            var url = canvas.toDataURL("image/png");
+            //以下代码为下载此图片功能
+            $('.img_to').attr('src',url);
+        },useCORS:true
+    });*/
+
+    html2canvas($(".img_from"), {
+        onrendered: function(canvas) {
+            document.body.appendChild(canvas);
+            var url = canvas.toDataURL("image/png");
+            //以下代码为下载此图片功能
+            $('.img_to').attr('src',url);
+        },
+        height: $(".img_from").height()*1+2,
+        width: $(".img_from").width()*1+2
+    });
+})
+</script>

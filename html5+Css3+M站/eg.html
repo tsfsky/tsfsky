@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>移动</title>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+.none {
+	display: none;
+}
+.yy {
+	height: 100%;
+	background: url('content/image/yy.jpg') center center no-repeat;
+	background-size: 90% auto;
+}
+</style>
+</head>
+<body>
+<span class="asd"></span>
+</body>
+</html>
+<link rel="stylesheet" type="text/css" href="content/css/Animate.css">
+<script type="text/javascript" src="content/js/jquery.js"></script>
+<script>
+function accSub(arg1, arg2) {
+      var r1, r2, m, n;
+      try {
+         r1 = arg1.toString().split(".")[1].length;
+     }
+     catch (e) {
+         r1 = 0;
+     }
+     try {
+         r2 = arg2.toString().split(".")[1].length;
+     }
+     catch (e) {
+         r2 = 0;
+     }
+     m = Math.pow(10, Math.max(r1, r2)); //last modify by deeka //动态控制精度长度
+     n = (r1 >= r2) ? r1 : r2;
+     return ((arg1 * m - arg2 * m) / m).toFixed(n);
+}
+$('.asd').html(accSub(34.12,0.11))
+</script>
